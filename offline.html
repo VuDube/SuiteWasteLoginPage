@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>You Are Offline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#437147',
+                            deep: '#1a301d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1a301d; /* Deep background matching brand */
+        }
+    </style>
+</head>
+<body class="font-sans flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-md text-center p-8 bg-white/5 backdrop-blur-md rounded-xl shadow-2xl border border-white/10 text-white">
+        <svg class="w-16 h-16 mx-auto mb-4 text-brand-DEFAULT" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H7M17 19H7M18 12h-2M8 12H6"/>
+        </svg>
+        <h1 class="text-3xl font-bold mb-2">Network Unavailable</h1>
+        <p class="text-gray-300 mb-6">
+            It looks like you are currently offline. This application is designed to work offline, 
+            but the page you requested is not yet cached.
+        </p>
+        <button 
+            onclick="window.location.reload();"
+            class="w-full bg-brand-DEFAULT text-white hover:bg-brand-light active:scale-[0.98] font-bold py-3 rounded-lg transition-all duration-200 shadow-md"
+        >
+            Retry Connection
+        </button>
+        <p class="mt-4 text-xs text-white/50">SuiteWaste OS - Offline Mode</p>
+    </div>
+</body>
+</html>
+
