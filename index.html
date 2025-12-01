@@ -7,6 +7,16 @@
     <meta name="theme-color" content="#437147">
     <title>SuiteWaste OS</title>
     
+    <!-- PWA REQUIRED LINKS -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- iOS/Safari Compatibility Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SW OS">
+    <!-- Using the Base64 icon URI defined in manifest for apple-touch-icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIyNTYiIGZpbGw9IiM0MzcxNDciLz4KICA8cGF0aCBkPSJNMjU2IDQxMEE5MC40IDkwLjQgMCAwIDEgMjMwIDE1MEMzNDUgMTI1IDM4MCAxMDAgNDIwIDUwYzI1IDUwIDUwIDEwMCA1MCAyMDAgMCAxMzUtMTE1IDI1MC0yNTAgMjUwWiIgLz4KICA8cGF0aCBkPSJNNTAgNDMwYzAtNzUgNDUtMTMwIDEyMC0xNTBDMjEwIDI2MCAyNTAgMjMwIDI3MCAyMDAiIC8+Cjwvc3ZnPg==">
+
     <!-- React & ReactDOM (Production Optimized) -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -355,6 +365,9 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script src="/pwa-register.js"></script>
 </body>
 </html>
 
