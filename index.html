@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="description" content="SuiteWaste OS - Industrial Waste Management System">
     
-    <!-- PWA Branding & Status Bar -->
+    <!-- PWA Branding -->
     <meta name="theme-color" content="#437147">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SuiteWaste">
 
-    <!-- iOS Icons (Base64 placeholder used for single-file demo, replace with real URLs in prod) -->
-    <link rel="apple-touch-icon" href="https://img.icons8.com/color/512/leaf.png">
+    <!-- EXTERNAL MANIFEST LINK (Uses your existing file) -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- iOS Icons (Ensure you have these images in your public folder or referenced in manifest) -->
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/leaf.png">
 
     <title>SuiteWaste OS</title>
     
@@ -51,39 +54,6 @@
                 }
             }
         }
-    </script>
-
-    <!-- INLINE MANIFEST (Engineered for Single-File PWA Support) -->
-    <script>
-        // Dynamic generation of Manifest Data URI
-        const manifest = {
-            "name": "SuiteWaste OS",
-            "short_name": "SuiteWaste",
-            "start_url": ".",
-            "display": "standalone",
-            "background_color": "#437147",
-            "theme_color": "#437147",
-            "orientation": "portrait",
-            "icons": [
-                {
-                    "src": "https://img.icons8.com/color/192/leaf.png",
-                    "sizes": "192x192",
-                    "type": "image/png"
-                },
-                {
-                    "src": "https://img.icons8.com/color/512/leaf.png",
-                    "sizes": "512x512",
-                    "type": "image/png"
-                }
-            ]
-        };
-        const stringManifest = JSON.stringify(manifest);
-        const blob = new Blob([stringManifest], {type: 'application/json'});
-        const manifestURL = URL.createObjectURL(blob);
-        const link = document.createElement('link');
-        link.rel = 'manifest';
-        link.href = manifestURL;
-        document.head.appendChild(link);
     </script>
 
     <style>
@@ -203,13 +173,6 @@
                     e.preventDefault();
                     setInstallPrompt(e);
                 });
-                
-                // Register Service Worker if supported
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register('/sw.js')
-                        .then(reg => console.log('SW Registered', reg))
-                        .catch(err => console.log('SW Failed', err));
-                }
             }, []);
 
             const handleInstall = () => {
@@ -289,7 +252,7 @@
                             </form>
                         </div>
 
-                        {/* INSTALL APP BUTTON (Only shows if Installable) */}
+                        {/* INSTALL BUTTON: Only shows if 'beforeinstallprompt' fired */}
                         {installPrompt && (
                             <button onClick={handleInstall} className="mt-6 mx-auto flex items-center gap-2 bg-brand-light/20 hover:bg-brand-light/30 border border-brand-light/30 text-white px-4 py-2 rounded-full text-sm font-medium transition-all backdrop-blur-sm animate-fade-in">
                                 <DownloadIcon className="w-4 h-4" /> Install SuiteWaste App
@@ -310,6 +273,9 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+    
+    <!-- PWA Registration Logic (Loads your existing file) -->
+    <script src="/pwa-register.js"></script>
 </body>
 </html>
 
