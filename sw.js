@@ -9,8 +9,11 @@ const CORE_ASSETS = [
     OFFLINE_URL,
     '/manifest.json',
     '/pwa-register.js',
-    // We intentionally omit external CDNs (React, Babel, Tailwind) from
-    // pre-caching, as they are large and usually cached by the browser already.
+    // CRITICAL UPDATE: External CDNs added for offline reliability
+    'https://unpkg.com/react@18/umd/react.production.min.js',
+    'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js',
+    'https://unpkg.com/@babel/standalone/babel.min.js',
+    'https://cdn.tailwindcss.com'
 ];
 
 // 1. INSTALLATION: Pre-cache core app shell assets
